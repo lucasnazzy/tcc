@@ -1,0 +1,52 @@
+body {
+  background-color: #fdf9f9;
+}
+
+.box {
+  background-color: #71aa81;
+  padding: 15px 0px;
+
+  .color-label {
+    color: #000;
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 50px;
+  }
+
+  .color-label-final {
+    color: #4b6953;
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 50px;
+  }
+
+  @media (max-width: 400px) {
+    .color-label {
+      font-size: 40px;
+    }
+
+    .color-label-final {
+      font-size: 40px;
+    }
+  }
+}
+
+.my-drop {
+  background: none !important;
+  color: #000 !important;
+  width: 210px !important;
+  font-size: 18px !important;
+}
+
+.dropdown-label {
+  min-width: 130px;
+  font-size: 18px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+//

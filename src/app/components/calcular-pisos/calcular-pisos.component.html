@@ -1,0 +1,77 @@
+<div class="blocos-box">
+  <form [formGroup]="formPisos" *ngIf="formPisos">
+    <div *ngIf="!metrosDePiso?.pristine && metrosDePiso?.errors">
+      <p class="error-label" *ngIf="metrosDePiso?.errors?.required">
+        metros de piso é obrigatório*.
+      </p>
+    </div>
+
+    <div class="input-box pb-3">
+      <label class="input-title" for="nome">
+        Digite quantos metros quadrados de piso você precisa
+      </label>
+      <input
+        class="input-style"
+        type="number"
+        formControlName="metrosDePiso"
+        id="metrosDePiso"
+        placeholder="Digite o metro quadrado"
+      />
+    </div>
+
+    <div
+      *ngIf="
+        !quantidadePisoPorCaixa?.pristine && quantidadePisoPorCaixa?.errors
+      "
+    >
+      <p class="error-label" *ngIf="quantidadePisoPorCaixa?.errors?.required">
+        quantidade Piso Por Caixa é obrigatório*.
+      </p>
+    </div>
+
+    <div class="input-box pb-2">
+      <label class="input-title" for="email">
+        Digite a quantidade que vem em cada caixa de piso :
+      </label>
+      <input
+        class="input-style"
+        type="number"
+        formControlName="quantidadePisoPorCaixa"
+        id="quantidadePisoPorCaixa"
+        placeholder="Digite o  comprimento"
+      />
+    </div>
+
+    <button
+      class="mt-3 mb-3"
+      [disabled]="!formPisos.valid"
+      (click)="calcularPisos()"
+      [ngClass]="!formPisos.valid ? 'button-disabled' : 'button-send'"
+    >
+      Calcular
+    </button>
+
+    <div>
+      <h2>
+        Esse é o numero de caixas de piso que vc precisa:
+
+        <span class="pisos-result" *ngIf="pisosUsados">
+          {{ pisosUsados }}
+        </span>
+      </h2>
+    </div>
+
+    <span *ngIf="pisosUsados">
+      Agora para saber o total de metros que será usado na obra é só fazer o
+      numero de caixas MULTIPLICADO PELA quantidade que vem em cada caixa
+    </span>
+
+    <h2 *ngIf="totalUsadoNaObra">
+      Então o total de metros de piso usados na obra é de:
+
+      <span class="pisos-result" *ngIf="totalUsadoNaObra">
+        {{ totalUsadoNaObra }}
+      </span>
+    </h2>
+  </form>
+</div>

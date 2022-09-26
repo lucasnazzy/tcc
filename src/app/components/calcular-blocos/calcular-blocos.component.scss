@@ -1,0 +1,65 @@
+.error-label {
+  color: rgb(255, 0, 0);
+  font-size: 14px;
+  font-weight: 600;
+}
+/* Chrome e outros */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.input-box {
+  max-width: 500px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+
+  .input-title {
+    font-weight: 600;
+    font-size: 19px;
+  }
+}
+
+.button-disabled {
+  background-color: #dddddd;
+  width: 150px;
+  border: gray 1px solid;
+  padding: 10px;
+  font-weight: bold;
+  color: #949494;
+  border-radius: 5px;
+  cursor: not-allowed;
+}
+.blocos-box {
+  padding: 20px 0px;
+}
+
+.blocos-result {
+  font-weight: bold;
+  color: green;
+}
+
+.input-style {
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #222222;
+}
+
+.button-send {
+  width: 150px;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  color: #000000;
+  background-color: #71aa81;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,45 @@
+<div class="box">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center">
+      <span class="color-label"> Calcula </span>
+      <span class="color-label-final"> tor </span>
+      <img class="pl-3" src="../../assets/images/icons/logo.svg" alt="" />
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="dropdown show pt-5">
+    <a
+      class="btn btn-secondary dropdown-toggle my-drop"
+      href="#"
+      role="button"
+      id="dropdownMenuLink"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      <span *ngIf="!selectedItem"> Selecione uma opção</span>
+      <span *ngIf="selectedItem"> {{ selectedItem }} </span>
+    </a>
+
+    <div class="dropdown-menu p-0" aria-labelledby="dropdownMenuLink">
+      <a
+        *ngFor="let item of teste"
+        class="dropdown-item d-flex align-items-center"
+        (click)="selectedView(item.id)"
+      >
+        <div class="dropdown-label">
+          {{ item.name }}
+        </div>
+        <div>
+          <img width="35px" class="pl-2" src="{{ item.image }}" alt="" />
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <app-calcular-pisos *ngIf="visualizarPiso"></app-calcular-pisos>
+
+  <app-calcular-blocos *ngIf="visualizarBloco"></app-calcular-blocos>
+</div>

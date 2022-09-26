@@ -1,0 +1,61 @@
+<div class="blocos-box">
+  <form [formGroup]="formBlocos" *ngIf="formBlocos">
+    <div *ngIf="!altura?.pristine && altura?.errors">
+      <p class="error-label" *ngIf="altura?.errors?.required">
+        Altura é obrigatório*.
+      </p>
+    </div>
+
+    <div class="input-box pb-3">
+      <label class="input-title" for="nome">Digite a Altura: </label>
+      <input
+        class="input-style"
+        type="number"
+        formControlName="altura"
+        id="alturaBloco"
+        placeholder="Digite a Altura"
+      />
+    </div>
+
+    <div class="pt-3" *ngIf="!comprimento?.pristine && comprimento?.errors">
+      <p class="error-label" *ngIf="comprimento?.errors?.required">
+        comprimento é obrigatório*.
+      </p>
+    </div>
+
+    <div class="input-box pb-2">
+      <label class="input-title" for="email">Digite o Comprimento: </label>
+      <input
+        class="input-style"
+        type="number"
+        formControlName="comprimento"
+        id="comprimentoBloco"
+        placeholder="Digite o  comprimento"
+      />
+    </div>
+
+    <button
+      class="mt-3"
+      [disabled]="!formBlocos.valid"
+      (click)="calcularBlocos()"
+      [ngClass]="!formBlocos.valid ? 'button-disabled' : 'button-send'"
+    >
+      Calcular
+    </button>
+
+    <h2>
+      Primeiro passo é multiplicar altura por comprimento, e o segundo passo é o
+      resultado da multiplicação dividido por 1000.
+    </h2>
+
+    <h2></h2>
+    <div>
+      <h2>
+        A quantidade de blocos usados será
+        <span class="blocos-result" *ngIf="blocosUsados">
+          {{ blocosUsados }}
+        </span>
+      </h2>
+    </div>
+  </form>
+</div>
