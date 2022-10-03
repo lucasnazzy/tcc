@@ -1,0 +1,124 @@
+<div class="blocos-box">
+  <form [formGroup]="formTelhas" *ngIf="formTelhas">
+    <div *ngIf="!largura?.pristine && largura?.errors">
+      <p class="error-label" *ngIf="largura?.errors?.required">
+        Largura é obrigatório*.
+      </p>
+    </div>
+
+    <div class="input-box pb-3">
+      <label class="input-title" for="nome">Digite a Largura: </label>
+      <input
+        class="input-style"
+        type="number"
+        formControlName="largura"
+        id="larguraTelha"
+        placeholder="Digite a Largura"
+      />
+    </div>
+
+    <div class="pt-3" *ngIf="!comprimento?.pristine && comprimento?.errors">
+      <p class="error-label" *ngIf="comprimento?.errors?.required">
+        comprimento é obrigatório*.
+      </p>
+    </div>
+
+    <div class="input-box pb-2">
+      <label class="input-title" for="email">Digite o Comprimento: </label>
+      <input
+        class="input-style"
+        type="number"
+        formControlName="comprimento"
+        id="comprimentoBloco"
+        placeholder="Digite o  comprimento"
+      />
+    </div>
+
+    <div
+      class="d-flex flex-column"
+      [ngClass]="[telhaResult ? 'pt-3 pb-3' : 'pt-3 ']"
+    >
+      <button
+        class="mt-3 w-50"
+        [disabled]="!formTelhas.valid"
+        (click)="calcularTelhas()"
+        [ngClass]="!formTelhas.valid ? 'button-disabled' : 'button-send'"
+      >
+        Calcular a quantidade de metros quadrados
+      </button>
+
+      <div class="d-flex pt-5 pb-3" *ngIf="telhaResult">
+        <span class="set-size"> A QUANTIDADE DE Metros QUADRADOS É: </span>
+        <span class="telha-result set-size">
+          {{ telhaResult }}
+        </span>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column" *ngIf="telhaResult">
+      <h2>
+        Também teremos que calcular a caída de 37% que da 1,50m de altura. Agora
+        pegamos a metragem da caída que e 1,50m e multiplicaremos pela área que
+        é 200m²
+      </h2>
+
+      <button
+        class="mt-3 w-50"
+        [ngClass]="!telhaResult ? 'button-disabled' : 'button-send'"
+        (click)="calcularAreaTotal()"
+      >
+        Calcular area total de telhas
+      </button>
+    </div>
+
+    <h2 class="pt-3" *ngIf="areaTotal">
+      <span class="set-size"> A área total de telhas é de: </span>
+      <span class="telha-result set-size">
+        {{ areaTotal }}
+      </span>
+    </h2>
+
+    <div class="d-flex flex-column" *ngIf="areaTotal">
+      As telhas varião muito de acordo com o fabricante. Esta telha portuguesa
+      serão usadas 17 telhas por metro quadrado. Agora pegue as 17 telhas e
+      multiplique pela área total de telhas
+
+      <button class="mt-3 w-50 button-send" (click)="calcularTotalTelhas()">
+        Calcular total de telhas
+      </button>
+    </div>
+
+    <div *ngIf="totalTelhas" class="pt-3">
+      <span class="set-size"> O total de telhas é de: </span>
+      <span class="telha-result set-size">
+        {{ totalTelhas }}
+      </span>
+    </div>
+
+    <div class="d-flex flex-column" *ngIf="totalTelhas">
+      Nas obras sempre há um desperdício, neste cálculo usaremos 5% de
+      desperdício. Para esse calculo pegamos o total de telhas acrescentamos 5%.
+
+      <button
+        class="mt-3 w-50 button-send"
+        (click)="calcularTotalTelhasDesperdicio()"
+      >
+        Calcular total de telhas desperdício
+      </button>
+    </div>
+
+    <h2 *ngIf="totalTelhaDesperdicio" class="mt-3">
+      o total de telhas é de contando com desperdício é de:
+
+      <span class="telha-result">
+        {{ totalTelhaDesperdicio }}
+      </span>
+    </h2>
+    <!-- 
+    <h2>telhas cumeuras</h2>
+
+    Telhas cumeeiras são medidas por metro linear(linha reta) Telhas cumeeiras
+    vão 3 por metro. Nesse calculo precisamos cobrir uma área de 10mts. 3x10=30
+    Precisaremos de 30 telhas cumeeiras. -->
+  </form>
+</div>

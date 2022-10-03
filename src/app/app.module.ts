@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CalcularPisosComponent } from './components/calcular-pisos/calcular-pisos.component';
 import { CalcularBlocosComponent } from './components/calcular-blocos/calcular-blocos.component';
+import { CalcularTelhasComponent } from './components/calcular-telhas/calcular-telhas.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CalcularPisosComponent, CalcularBlocosComponent],
+  declarations: [AppComponent, HomeComponent, CalcularPisosComponent, CalcularBlocosComponent, CalcularTelhasComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -13,7 +13,9 @@ export class CalcularPisosComponent implements OnInit {
   totalUsadoNaObra: number = 0;
   numeroCaixas: any;
   quantidadePorCaixa: any;
-  metroPiso: any;
+  metrosDePiso: any;
+  porcantagemRodape: any;
+  validationRodape: boolean = false;
 
   constructor(private fb: FormBuilder) {}
 
@@ -24,10 +26,16 @@ export class CalcularPisosComponent implements OnInit {
   calcularPisos() {
     let accountValue: pisosObject = this.formPisos?.getRawValue();
 
+    if (!this.porcantagemRodape) {
+      let rodape = (accountValue.metrosDePiso * 10) / 100;
+
+      accountValue.metrosDePiso = accountValue.metrosDePiso + rodape;
+    }
+
+    console.log(accountValue?.metrosDePiso);
+
     let pisoResult =
       accountValue?.metrosDePiso / accountValue?.quantidadePisoPorCaixa;
-
-    console.log(pisoResult);
 
     this.pisosUsados = Math.ceil(pisoResult);
 
@@ -42,12 +50,13 @@ export class CalcularPisosComponent implements OnInit {
     });
   }
 
-  get metrosDePiso() {
-    return this.formPisos?.get('metrosDePiso');
-  }
-
   get quantidadePisoPorCaixa() {
     return this.formPisos?.get('quantidadePisoPorCaixa');
+  }
+
+  rodapePorcentagem(rodape: boolean) {
+    if (this.porcantagemRodape || !this.porcantagemRodape)
+      this.validationRodape = true;
   }
 }
 export class pisosObject {
